@@ -1,0 +1,22 @@
+.cart-container {
+  padding: 1.5em;
+  padding-top: calc(var(--header-height) + 1em);
+
+  width: 100%;
+}
+
+.cart-list {
+  list-style: none;
+}
+.cart-list > * {
+  color: var(--tertiary-color);
+}
+.cart-list li {
+  display: grid;
+  grid-template-rows: 1fr 20%;
+  grid-template-columns: 70% 1fr;
+  margin-bottom: 1em;
+}
+.cart-list li p:last-child {
+  text-align: center;
+}

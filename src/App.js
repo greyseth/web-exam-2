@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext, useEffect } from "react";
+import { UserContext } from "./providers/UserProvider";
+import { redirect, useNavigate } from "react-router-dom";
+import LoginChecker from "./LoginChecker";
+import Header from "./components/Header";
+import ItemsList from "./components/consumer/ItemsList";
 
 function App() {
+  const { userData, setUserData } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userData) {
+      if (userData.role !== "Konsumen") navigate("/manage");
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <LoginChecker />
+
+      <Header />
+
+      {userData ? <ItemsList /> : null}
+    </>
   );
 }
 

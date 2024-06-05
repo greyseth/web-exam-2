@@ -1,0 +1,62 @@
+[
+  {
+    "id_user": 1,
+    "username": "Greyseth",
+    "password": "12345",
+    "role": "Admin"
+  },
+  {
+    "id_user": 2,
+    "username": "BluePhoenix",
+    "password": "password123",
+    "role": "Gudang"
+  },
+  {
+    "id_user": 3,
+    "username": "RedRaven",
+    "password": "qwerty678",
+    "role": "Kasir"
+  },
+  {
+    "id_user": 4,
+    "username": "GreenDragon",
+    "password": "dragon2021",
+    "role": "Supplier"
+  },
+  {
+    "id_user": 5,
+    "username": "YellowTiger",
+    "password": "securepass789",
+    "role": "Konsumen"
+  },
+  {
+    "id_user": 6,
+    "username": "BlackPanther",
+    "password": "panther987",
+    "role": "Admin"
+  },
+  {
+    "id_user": 7,
+    "username": "WhiteWolf",
+    "password": "wolf321",
+    "role": "Gudang"
+  },
+  {
+    "id_user": 8,
+    "username": "PurpleFox",
+    "password": "fox654",
+    "role": "Kasir"
+  },
+  {
+    "id_user": 9,
+    "username": "OrangeLion",
+    "password": "lion111",
+    "role": "Supplier"
+  },
+  {
+    "id_user": 10,
+    "username": "PinkDolphin",
+    "password": "dolphin000",
+    "role": "Konsumen"
+  }
+]

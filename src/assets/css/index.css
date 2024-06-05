@@ -1,0 +1,255 @@
+:root {
+  --primary-color: #fffdb5;
+  --secondary-color: #6fdce3;
+  --tertiary-color: #5c2fc2;
+  --header-height: 3em;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--primary-color);
+}
+
+button:hover:not(:disabled),
+select:hover:not(:disabled) {
+  cursor: pointer;
+}
+
+/* Global Components */
+.header {
+  width: 100%;
+  height: var(--header-height);
+
+  position: fixed;
+  top: 0px;
+  backdrop-filter: blur(10px);
+  display: table;
+
+  z-index: 1000;
+}
+.header > h2 {
+  text-align: center;
+  width: 100%;
+  color: var(--tertiary-color);
+  transition: 1s;
+  display: table-cell;
+  vertical-align: middle;
+}
+.header > h2:hover {
+  animation: header-text 2s infinite;
+}
+.header > button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.header > button:last-child {
+  right: 0;
+  margin-right: 1em;
+}
+.header > button:first-child {
+  left: 0;
+  margin-left: 1em;
+}
+
+@keyframes header-text {
+  0% {
+    color: var(--secondary-color);
+  }
+  25% {
+    color: yellow;
+  }
+  50% {
+    color: limegreen;
+  }
+  75% {
+    color: lightblue;
+  }
+  100% {
+    color: var(--tertiary-color);
+  }
+}
+
+/* General Presets */
+.point-hover:hover {
+  cursor: pointer;
+}
+
+button {
+  transition: 0.5s;
+  padding: 0.5em;
+  border-radius: 10px;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+}
+button {
+  background-color: var(--tertiary-color);
+  color: var(--primary-color);
+}
+button.secondary-btn {
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color);
+}
+button:hover:not(:disabled) {
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+}
+button.secondary-btn:hover:not(:disabled) {
+  background-color: var(--tertiary-color);
+  color: var(--secondary-color);
+}
+button:disabled {
+  opacity: 0.5;
+}
+
+input[type|="text"],
+input[type|="number"],
+input[type|="password"],
+select {
+  border: none;
+  padding: 0.5em;
+  font-size: 1em;
+  color: var(--tertiary-color);
+  border-radius: 10px;
+}
+input[type|="text"]:focus,
+input[type|="number"]:focus,
+input[type|="password"]:focus {
+  outline: none;
+}
+
+.container-centered {
+  width: 100%;
+  height: 100vh;
+}
+.container-centered > * {
+  margin-left: auto;
+  margin-right: auto;
+
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.panel {
+  background-color: var(--secondary-color);
+  padding: 1em;
+  border-radius: 15px;
+  border: 2px solid var(--tertiary-color);
+  box-shadow: 0px 0px 25px white;
+}
+
+.number-selector {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1em 0px;
+}
+.number-selector * {
+  font-size: 1.5em;
+}
+.number-selector > p {
+  font-size: 2em;
+}
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+
+  animation: popup-container-in 1 0.5s forwards;
+}
+.popup-container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1em;
+
+  animation: popup-panel-in 1 0.75s forwards;
+}
+.popup-container img {
+  width: 50%;
+  height: auto;
+}
+.popup-container h2 {
+  color: var(--tertiary-color);
+}
+.popup-container .actions-container {
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+@keyframes popup-container-in {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes popup-panel-in {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: transalteY(0px);
+    opacity: 1;
+  }
+}
+
+.search-bar {
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5em;
+
+  background-color: var(--tertiary-color);
+  border-radius: 15px;
+}
+.search-bar > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+.search-bar > input {
+  font-size: 1em;
+  margin-right: 1em;
+  background-color: transparent;
+  border: none;
+  color: var(--primary-color);
+}
+.search-bar > input:focus {
+  outline: none;
+}
+.search-bar > input::placeholder {
+  color: var(--secondary-color);
+}
+.search-bar > img {
+  transition: 0.5s;
+}
+.search-bar > img:hover {
+  cursor: pointer;
+  transform: scale(110%);
+}

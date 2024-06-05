@@ -1,0 +1,72 @@
+[
+  {
+    "item_id": "0",
+    "nama_barang": "Bricks",
+    "kategori": "Sintetis",
+    "harga": "10000",
+    "stok": "5"
+  },
+  {
+    "item_id": "1",
+    "nama_barang": "Cement",
+    "kategori": "Sintetis",
+    "harga": "50000",
+    "stok": "50"
+  },
+  {
+    "item_id": "2",
+    "nama_barang": "Sand",
+    "kategori": "Alami",
+    "harga": "20000",
+    "stok": "100"
+  },
+  {
+    "item_id": "3",
+    "nama_barang": "Gravel",
+    "kategori": "Alami",
+    "harga": "15000",
+    "stok": "75"
+  },
+  {
+    "item_id": "4",
+    "nama_barang": "Steel Rebar",
+    "kategori": "Sintetis",
+    "harga": "30000",
+    "stok": "20"
+  },
+  {
+    "item_id": "5",
+    "nama_barang": "Wood Planks",
+    "kategori": "Alami",
+    "harga": "25000",
+    "stok": "30"
+  },
+  {
+    "item_id": "6",
+    "nama_barang": "Glass Panels",
+    "kategori": "Sintetis",
+    "harga": "40000",
+    "stok": "15"
+  },
+  {
+    "item_id": "7",
+    "nama_barang": "Tiles",
+    "kategori": "Sintetis",
+    "harga": "35000",
+    "stok": "40"
+  },
+  {
+    "item_id": "8",
+    "nama_barang": "Marble",
+    "kategori": "Alami",
+    "harga": "60000",
+    "stok": "10"
+  },
+  {
+    "item_id": "9",
+    "nama_barang": "Clay",
+    "kategori": "Alami",
+    "harga": "12000",
+    "stok": "80"
+  }
+]
