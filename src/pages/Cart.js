@@ -112,13 +112,15 @@ function Cart() {
             Keranjang Anda
           </h2>
           <div>
-            <button
-              className="secondary-btn"
-              onClick={handleOrder}
-              style={{ marginRight: "1em" }}
-            >
-              Pesan
-            </button>
+            {grandTotal > 0 ? (
+              <button
+                className="secondary-btn"
+                onClick={handleOrder}
+                style={{ marginRight: "1em" }}
+              >
+                Pesan
+              </button>
+            ) : null}
             <button className="secondary-btn" onClick={() => navigate("/")}>
               Kembali
             </button>
