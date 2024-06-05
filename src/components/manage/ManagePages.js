@@ -381,6 +381,15 @@ function ManageTransactions() {
                 </thead>
                 <tbody>
                   {orders.map((o, i) => {
+                    let totalPrice = 0;
+                    appData.orderItems.forEach((oi) => {
+                      if (oi.id_transaksi === o.id_transaksi) {
+                        totalPrice +=
+                          oi.harga_satuan * oi.kuantitas -
+                          oi.harga_satuan * oi.kuantitas * (oi.diskon / 100);
+                      }
+                    });
+
                     return (
                       <tr key={i}>
                         <td>{o.id_transaksi}</td>
@@ -390,11 +399,12 @@ function ManageTransactions() {
                           {new Intl.NumberFormat("id-ID", {
                             style: "currency",
                             currency: "IDR",
-                          }).format(o.total_harga)}
+                          }).format(totalPrice)}
                         </td>
                         <td>{o.status_validasi}</td>
                         <td>
                           <button
+                            className="secondary-btn"
                             onClick={() => {
                               navigate("/manage/transaksi/" + o.id_transaksi);
                             }}
@@ -437,6 +447,11 @@ function TransactionDetails({ trans_id, appData, setAppData }) {
 
   const [transactionDetail, setTransactionDetail] = useState();
   const [transactionItems, setTransactionItems] = useState([]);
+  const [discountTarget, setDiscountTarget] = useState({
+    settingDiscount: false,
+    id_detail: 0,
+  });
+  const [discountInput, setDiscountInput] = useState();
 
   const [yesValid, setYesValid] = useState(false);
   const [cantValidate, setCantValidate] = useState(false);
@@ -506,6 +521,27 @@ function TransactionDetails({ trans_id, appData, setAppData }) {
     setHasOrdered(true);
   }
 
+  function handleDiscount() {
+    // Guhhhhh i have to do this twice
+
+    let newTransactionItems = transactionItems;
+    newTransactionItems[
+      newTransactionItems.findIndex(
+        (ti) => ti.id_detail === discountTarget.id_detail
+      )
+    ].diskon = discountInput;
+
+    let newOrderItems = appData.orderItems;
+    newOrderItems[
+      newOrderItems.findIndex((oi) => oi.id_detail === discountTarget.id_detail)
+    ].diskon = discountInput;
+
+    setTransactionItems(newTransactionItems);
+    setAppData({ ...appData, orderItems: newOrderItems });
+
+    setDiscountTarget({ ...discountTarget, settingDiscount: false });
+  }
+
   return (
     <>
       {yesValid ? (
@@ -556,6 +592,36 @@ function TransactionDetails({ trans_id, appData, setAppData }) {
         />
       ) : null}
 
+      {discountTarget.settingDiscount ? (
+        <div className="popup-container">
+          <div className="panel">
+            <h2>
+              Berapa Jumlah Diskon yang Ingin Diterapkan? (Dalam Persentase)
+            </h2>
+            <input
+              type="number"
+              placeholder="Jumlah Diskon"
+              value={discountInput}
+              onChange={(e) => setDiscountInput(parseInt(e.target.value))}
+            />
+
+            <div className="actions-container">
+              <button onClick={handleDiscount}>Terapkan Diskon</button>
+              <button
+                onClick={() =>
+                  setDiscountTarget({
+                    ...discountTarget,
+                    settingDiscount: false,
+                  })
+                }
+              >
+                Batalkan
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       <h2>Menampilkan Transaksi {trans_id}</h2>
 
       {transactionDetail ? (
@@ -604,7 +670,10 @@ function TransactionDetails({ trans_id, appData, setAppData }) {
                   {new Intl.NumberFormat("id-ID", {
                     style: "currency",
                     currency: "IDR",
-                  }).format(t.harga_satuan * t.kuantitas)}
+                  }).format(
+                    t.harga_satuan * t.kuantitas -
+                      t.harga_satuan * t.kuantitas * (t.diskon / 100)
+                  )}
                 </td>
                 <td>{t.diskon}</td>
                 <td>
@@ -624,6 +693,17 @@ function TransactionDetails({ trans_id, appData, setAppData }) {
                       Tambah Stock
                     </button>
                   ) : null}
+                  <button
+                    className="secondary-btn"
+                    onClick={() =>
+                      setDiscountTarget({
+                        settingDiscount: true,
+                        id_detail: t.id_detail,
+                      })
+                    }
+                  >
+                    Tambah Diskon
+                  </button>
                 </td>
               </tr>
             );

@@ -5,12 +5,13 @@ import Header from "../components/Header";
 import Sidebar from "../components/manage/Sidebar";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../providers/UserProvider";
-import { Outlet, Route, Routes, useNavigate } from "react-router";
+import { Outlet, Route, Routes, useLocation, useNavigate } from "react-router";
 import { useCookies } from "react-cookie";
 import { AppDataContext } from "../providers/AppDataProvider";
 
 function Manage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { userData, setUserData } = useContext(UserContext);
   const { appData, setAppData } = useContext(AppDataContext);
   const [cookies, setCookies, removeCookies] = useCookies();
@@ -47,7 +48,7 @@ function Manage() {
             navigate("/manage/transaksi");
             setCurPage("transactions");
           },
-          disabledCheck: "transactions",
+          disabledCheck: "transaksi",
         });
       } else if (userData.role === "Gudang") {
         // newAdminFunctions.push({
@@ -82,7 +83,7 @@ function Manage() {
             navigate("/manage/transaksi");
             setCurPage("transactions");
           },
-          disabledCheck: "transactions",
+          disabledCheck: "transaksi",
         });
         newAdminFunctions.push({
           display: "List Stock",
@@ -135,7 +136,14 @@ function Manage() {
       <Header titleOverride={"BI Rotan Admin Page"} />
 
       <section className="manage-container">
-        <Sidebar buttons={adminFunctions} curPage={curPage} />
+        <Sidebar
+          buttons={adminFunctions}
+          curPage={
+            location.pathname.split("/")[
+              location.pathname.split("/").length - 1
+            ]
+          }
+        />
 
         <Outlet />
       </section>
