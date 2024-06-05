@@ -641,8 +641,8 @@ function TransactionDetails({ trans_id, appData, setAppData }) {
           <th>Kuantitas</th>
           <th>Stock Barang</th>
           <th>Harga Satuan</th>
-          <th>Harga Total</th>
           <th>Diskon</th>
+          <th>Harga Total</th>
           <th>Actions</th>
         </thead>
         <tbody>
@@ -666,6 +666,7 @@ function TransactionDetails({ trans_id, appData, setAppData }) {
                     currency: "IDR",
                   }).format(t.harga_satuan)}
                 </td>
+                <td>{t.diskon}</td>
                 <td>
                   {new Intl.NumberFormat("id-ID", {
                     style: "currency",
@@ -675,7 +676,6 @@ function TransactionDetails({ trans_id, appData, setAppData }) {
                       t.harga_satuan * t.kuantitas * (t.diskon / 100)
                   )}
                 </td>
-                <td>{t.diskon}</td>
                 <td>
                   {appData.items.find((i) => i.item_id === t.id_barang).stok <
                   t.kuantitas ? (
