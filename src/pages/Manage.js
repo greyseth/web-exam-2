@@ -19,19 +19,18 @@ function Manage() {
   const [curPage, setCurPage] = useState("");
 
   useEffect(() => {
-    console.log(userData);
     if (userData) {
       let newAdminFunctions = [];
 
       if (userData.role === "Supplier") {
-        newAdminFunctions.push({
-          display: "List Stock",
-          action: () => {
-            navigate("/manage/stock");
-            setCurPage("stock");
-          },
-          disabledCheck: "stock",
-        });
+        // newAdminFunctions.push({
+        //   display: "List Stock",
+        //   action: () => {
+        //     navigate("/manage/stock");
+        //     setCurPage("stock");
+        //   },
+        //   disabledCheck: "stock",
+        // });
 
         newAdminFunctions.push({
           display: "List Permintaan Persediaan",
@@ -51,14 +50,14 @@ function Manage() {
           disabledCheck: "transactions",
         });
       } else if (userData.role === "Gudang") {
-        newAdminFunctions.push({
-          display: "Buat Laporan Stock",
-          action: () => {
-            navigate("/manage/report");
-            setCurPage("report");
-          },
-          disabledCheck: "report",
-        });
+        // newAdminFunctions.push({
+        //   display: "Buat Laporan Stock",
+        //   action: () => {
+        //     navigate("/manage/report");
+        //     setCurPage("report");
+        //   },
+        //   disabledCheck: "report",
+        // });
 
         newAdminFunctions.push({
           display: "List Stock",
@@ -69,14 +68,14 @@ function Manage() {
           disabledCheck: "stock",
         });
       } else if (userData.role === "Admin") {
-        newAdminFunctions.push({
-          display: "Buat Laporan Stock",
-          action: () => {
-            navigate("/manage/report");
-            setCurPage("report");
-          },
-          disabledCheck: "report",
-        });
+        // newAdminFunctions.push({
+        //   display: "Buat Laporan Stock",
+        //   action: () => {
+        //     navigate("/manage/report");
+        //     setCurPage("report");
+        //   },
+        //   disabledCheck: "report",
+        // });
         newAdminFunctions.push({
           display: "List Transaksi",
           action: () => {
@@ -111,19 +110,19 @@ function Manage() {
         });
       }
 
-      newAdminFunctions.push({
-        display: "[DEBUG] Log App Data",
-        action: () => {
-          console.log(appData);
-        },
-      });
+      // newAdminFunctions.push({
+      //   display: "[DEBUG] Log App Data",
+      //   action: () => {
+      //     console.log(appData);
+      //   },
+      // });
 
-      newAdminFunctions.push({
-        display: "[DEBUG] Log Login Data",
-        action: () => {
-          console.log(userData);
-        },
-      });
+      // newAdminFunctions.push({
+      //   display: "[DEBUG] Log Login Data",
+      //   action: () => {
+      //     console.log(userData);
+      //   },
+      // });
 
       setAdminFunctions(newAdminFunctions);
     }

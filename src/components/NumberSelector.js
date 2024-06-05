@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 function NumberSelector({ data, setData, max, customFunction }) {
+  const [manual, setManual] = useState(false);
+
   function handleIncrement(incvalue) {
     if (setData != null && data != null) {
       if (incvalue === -1 && data <= 0) {
@@ -28,7 +32,7 @@ function NumberSelector({ data, setData, max, customFunction }) {
       >
         -
       </button>
-      <p>{data ?? 0}</p>
+      <p onClick={() => setManual(true)}>{data ?? 0}</p>
       <button
         disabled={data >= max}
         onClick={(e) => {

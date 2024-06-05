@@ -156,8 +156,16 @@ input[type|="password"]:focus {
 .number-selector * {
   font-size: 1.5em;
 }
-.number-selector > p {
+.number-selector > p,
+.number-selector > input {
+  color: var(--tertiary-color);
   font-size: 2em;
+  text-align: center;
+  background: none;
+  border: none;
+}
+.number-selector input:focus {
+  outline: none;
 }
 
 .popup-container {

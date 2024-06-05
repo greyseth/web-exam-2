@@ -34,7 +34,6 @@ function StorageManager() {
 
     // Updates every time appData changes
 
-    console.log(appData);
     localStorage.setItem("items", JSON.stringify(appData.items));
     localStorage.setItem("users", JSON.stringify(appData.users));
     localStorage.setItem("orders", JSON.stringify(appData.orders));

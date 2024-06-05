@@ -58,11 +58,19 @@ function Cart() {
     });
 
     appData.cartItems.forEach((ci) => {
-      if (ci.id_user === userData.user_id) newOrderItems.push({ ...ci, id_transaksi: biggestOrderId + 1 });
+      if (ci.id_user === userData.user_id)
+        newOrderItems.push({ ...ci, id_transaksi: biggestOrderId + 1 });
     });
 
-    const newCartItems = appData.cartItems.filter(ci => ci.id_user !== userData.user_id);
-    setAppData({...appData, cartItems: newCartItems, orders: newOrders, orderItems: newOrderItems});
+    const newCartItems = appData.cartItems.filter(
+      (ci) => ci.id_user !== userData.user_id
+    );
+    setAppData({
+      ...appData,
+      cartItems: newCartItems,
+      orders: newOrders,
+      orderItems: newOrderItems,
+    });
 
     setHasOrdered(true);
   }
@@ -182,10 +190,8 @@ function CartItem({ itemIndex, cartItems, setCartItems }) {
       } else return nci;
     });
     newCartItems = newCartItems.filter((nci) => {
-      console.log(nci);
       return parseInt(nci.kuantitas) > 0;
     });
-    console.log(newCartItems);
     setCartItems(newCartItems);
   }, [qty]);
 
